@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.progress-bar {
+    max-height: 10px;
+}
+</style>
+
+<div class="row">
+<div class="col-md-8">
+
+<ul class="vcrumb">
+    <li><a class="active">{{ famplex_id }}</a>
+</ul>
+
+<h1>FamPlex</h1>
+
+{% for entity in entities: %}
+<p><a href="entity/{{ entity }}">{{ entity }}</a>
+{% endfor %}
+
+<h4>Synonyms:</h4>
+
+{% for syn in synonyms %}
+    <p>{{ syn }}
+{% endfor %}
+
+<p>{{ description }}
+
+</div> <!-- span -->
+
+</div> <!-- row -->
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.progress-bar {
+    max-height: 10px;
+}
+</style>
+
+<div class="row">
+<div class="col-md-8">
+
+<ul class="vcrumb">
+    <li><a class="active">{{ famplex_id }}</a>
+</ul>
+
+<h1>{{ famplex_id }}</h1>
+
+<h4>Equivalent entries:</h4>
+
+{% for eq_db, eq_db_id, eq_url in equivalences: %}
+<p><a href="{{ eq_url }}">{{ eq_db }}: {{eq_db_id}}</a>
+{% endfor %}
+
+<h4>Synonyms:</h4>
+
+{% for syn in synonyms %}
+    <p>{{ syn }}
+{% endfor %}
+
+<p>{{ description }}
+
+</div> <!-- span -->
+
+<div class="col-md-4">
+
+<h4>Child of:</h4>
+
+<ul class="list-group">
+{% for par in isa_rels %}
+    <li class="list-group-item">
+    <a href="">
+        {{ par }}
+    </a></li>
+{% endfor %}
+</ul>
+
+<h4>Member of:</h4>
+
+<ul class="list-group">
+{% for whole in partof_rels %}
+    <li class="list-group-item">
+    <a href="">
+        {{ whole }}
+    </a></li>
+{% endfor %}
+</ul>
+
+</div> <!-- span -->
+
+</div> <!-- row -->
+
+{% endblock %}
